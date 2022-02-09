@@ -1,35 +1,41 @@
 import React from 'react';
-import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavbarElements';
+import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
-  return <>
-      <Nav>
-          <NavLink to="/">
-              <h1>Logo</h1>
-          </NavLink>
-          <Bars />
-          <NavMenu>
-              <NavLink to="/" activeStyle>
-                  Home
-              </NavLink>
-              <NavLink to="/about-us" activeStyle>
-                  About Us
-              </NavLink>
-              <NavLink to="/product" activeStyle>
-                  Product
-              </NavLink>
-              <NavLink to="/blog" activeStyle>
-                  Blog
-              </NavLink>
-              <NavLink to="/contact" activeStyle>
-                  Contact
-              </NavLink>
-          </NavMenu>
-          <NavBtn>
-              <NavBtnLink to='/search'>Search</NavBtnLink>
-          </NavBtn>
-      </Nav>
-  </>;
+const NavBar = () => {
+    return <>
+        <Navbar bg="light" variant="light" sticky="top" expand="md">
+            <Container fluid>
+                <Navbar.Brand href="#home">
+                    <img
+                        alt=""
+                        src="logo.svg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />{' '}
+                    RELEARNING
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll
+                    >
+                    </Nav>
+                    <Nav className="d-flex">
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
+                        <Nav.Link as={Link} to="/product">Product</Nav.Link>
+                        <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
+                        <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                        <Button variant="outline-primary">Search</Button>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    </>;
 };
 
-export default Navbar;
+export default NavBar;
